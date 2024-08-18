@@ -1,0 +1,334 @@
+==========
+Git Basics
+==========
+git init    
+git add
+git status
+git commit
+git config
+git log
+git diff
+
+
+============
+Git Branches
+============
+git branch
+git checkout
+git merge
+
+===================
+Remote Repositories
+===================
+git clone
+git remote
+git push
+git pull
+git fetch
+
+====================
+Undoing Changes
+====================
+git revert
+git reset
+
+
+
+
+=================================================================================================
+
+git config  #set and read specific git configuration
+git config --global user.name "gajenhub"
+git config --global user.email "github.gajen@gmail.com"
+
+git init
+git add             #moved modified files in staging area
+git commit -m "commit message"
+
+git branch
+git branch -a               #list branch from local and remote repo
+git branch branch-name      #create a new branch
+
+git checkout                    (switch between branches)
+git checkout -b branch_name     (allows u to create new branch and checkout at the same time)
+
+git remote add origin <url>
+
+Remove Git Directory
+--------------------
+sudo rm -rf .git
+git init
+
+
+=================================================================================================
+
+
+
+
+
+
+
+
+
+
+userid/password
+gajendrashrestha.cs@gmail.com
+github.gajen@gmail.com
+gajenhub
+08/18/2024
+
+
+
+
+git commands
+------------
+
+add config
+----------
+git config  (set and read specific git configuration)
+git config --global user.name "gajendra-shrestha"
+git config --global user.email "gajendrashrestha.cs@gmail.com"
+git config --global --list
+
+remove config
+-------------
+git config --global --unset user.name
+git config --global --list (check if username removed?)
+git config --global --unset user.email
+
+create a new git repo and bgin tracking
+----------------------------------------
+$git init
+
+$git add    (moved modified files into the staging area)
+
+This works fine if you only want to add entire files and all of
+their changes to the staging area for commit. 
+
+If you want to make different changes within the same file and
+then only add some of those changes while leaving others in the
+working directory, git patch is the solution.
+
+https://git-scm.com/docs/git-add
+https://chat.openai.com/c/31307eb7-0701-4bed-a5bc-d40d3de3d335
+
+
+$git add    (moved modified files into the staging area)
+$git commit -m "commit message"
+
+add the file changes and create the commit using the message
+------------------------------------------------------------
+$git commit -am "new project"       (add and commit - advanced techniques)
+
+$git reset                          (undo changes from working directory)
+
+$git revert                         (create a new commit that undeos a previous commit)
+
+$git status                         (show you the status of your files)
+
+$git commit                         (create a snapshot and commit to .git)
+
+$git commit -m "commit message"
+
+
+Rename current commit message using the `--amend` flag and write the new message. 
+
+rename current message using the `--amend` flag
+-----------------------------------------------
+$git commit --amend -m "Love"
+
+$git commit --amend --no-edit       (additional change to current commit/ retain previous commit use --no-edit)
+
+
+$git log                    (shows committed snapshot history)
+$git log --online           (shows commit in one line)
+$git log --online --graph
+
+$git diff                   (shows changes between your working directory and staging area)
+$git diff --staged          (in stage)
+$git diff head              (to check both changes in the working and staging area)
+
+$git --git a/file.txt b/file.txt        (comparing two versions of same file)
+
+$git diff cached            (compare working repo and staging area) / after commit it won't show
+
+$git diff 94499 3582c
+    
+$git diff 94499 HEAD
+    
+$git diff <local-branch> <remote-branch>
+$git diff main origin/main
+
+$git branch                 (list only branches from local repo)
+
+$git branch -a              (list branches from local and remote repo)
+$git branch branch-name     (create a new branch)
+$git branch -m branch-name  (-m will rename git branch, m stands for move or rename, this will 
+                            rename currently checkedout branch)  
+$git branch -d branch-name  (delete a branch)
+
+$git push origin -u <branch-name>
+
+is used to push local branch to a remote repo (typically called origin) and set up tracking b/w 
+the local and the remote branch. 
+
+`git-push`  :   This is the command used to push commits from your local repo to a remote repo
+`origin`    :   This is the name of the remote repo. By convention, the default name of the remote
+                repo you cloned from is `origin`
+
+`-u`        :   The flag stands for "set upstream". When used with `git push`, it tells Git to set
+                up a tracking relationship between the local branch and the remote branch. This 
+                means that in the future, u can simply use `git push` without specifying the
+                remote and branch names, and Git will know where to push changes. 
+
+`<branch-name>` :   This is the name of the local branch you want to push to remote repo. 
+
+
+
+SWITCH BRANCHES::
+-----------------
+$git checkout       (switch between branches)
+$git checkout -b branch_name    (allows u to create new branch and checkout at the same time)
+
+GIT MERGE
+---------
+$git merge          (bring changes from one branch into another)
+$git merge branch-name -m "Merge branch-name into currently checkout out branch"
+
+NB:
+git has multiple ways that you can merge branches together and each way has its own benefits
+and outcomes.  
+    -   ort
+    -   recursive
+
+REMOTE:
+-------
+$git remote add origin <url>
+
+$git remote add     :       use to add new remote repo to your git config
+origin              :       name u r giving to remote repo. "origin" is common convention for the 
+                            default remote repo. 
+url                 :       name of the remote repo u want to add. 
+
+
+
+$git remote -v (verbose)    :   shows remote link (origin connection)
+
+$git pull           :       retrieves and integrates changes from other repo. 
+                            git pull is essentially running two git commands, one command is to 
+                            get the changes from the network and another commands to merge those
+                            changes into your repo. 
+
+$git fetch          :       retrieves but doesnot integrates changes from other repo. 
+
+$git clone          :       copies an entire repo into a new local .git directory
+
+$git remote -v      :       displays list of all remote repos associated with your git project.
+
+$git remote remove origin:  is used to remove the remote named origin from your git repo config. 
+
+
+
+
+GIT ADVANCED TECHNIQUES         https://www.kdnuggets.com/10-advanced-git-techniques
+-----------------------
+1.  Add & Commit
+
+2.  Amend                           git commit --amend -m "Love"
+    Rename current commit message
+
+3.  Override Remote History         git push origin master --force
+
+4.  Revert
+    Undo a commit in Git. This command doesnot remove any commits. Instead it creates a new 
+    commit that undoes the changes made by the original commit. 
+
+    use the `log` with `--online` flag to view commit history in a shorter form. 
+    $git log --oneline
+
+    
+
+8.  Decorate the logs
+    To view the detail history of all the commits made in the current repository. use git log.
+    To make the output more readable, use `graph` `decorate` and `oneline` flags. This will 
+    display the changes made in multiple branches and how they merge. 
+
+    $git log --graph --decorate --oneline 
+
+9.  Switch back branche
+
+    -create a new branch "neo"      git branch neo
+    -switch to the neo branch       git checkout neo
+    -go back to original branch     git checkout -
+
+10. Copy Remote Changes
+    Override the local repo using the remote repo
+    `fetch` command to use the latest changes from remote repo. 
+
+    $git fetch origin
+    
+    $git reset --hard origin/master
+    `reset` command with `--hard` flag to override any local changes with the remote version.
+     this will parmanently disgard any local changes. 
+
+     HEAD is not at f425059 Love
+     if there is still untracked files, they can be removed using the following command:
+     $git clean -df
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
