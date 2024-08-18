@@ -1,0 +1,21 @@
+
+
+Q.  Check Linux Distribution
+
+    $cat /etc/os-release
+
+    Debian, chromebook is running in a Debian-based Linux environment. This is common in 
+    the Crostini Linux environment on chromebooks.
+
+@.  Install MariaDb
+    $sudo apt update
+    $sudo apt upgrade
+    $sudo apt install mariadb-server
+    $sudo mysql --version
+
+    Login:
+    $sudo mysql -u root
+    $show databases;
+    $show tables;
+    
+    
